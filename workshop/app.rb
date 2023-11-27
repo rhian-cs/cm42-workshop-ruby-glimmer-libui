@@ -1,6 +1,5 @@
 require 'glimmer-dsl-libui'
-
-Activity = Struct.new(:name, :completed)
+require_relative 'activity'
 
 class App
   include Glimmer
@@ -8,10 +7,7 @@ class App
   attr_accessor :activities, :new_activity_name
 
   def initialize
-    @activities = [
-      Activity.new(name: 'Do the dishes', completed: false),
-      Activity.new(name: 'Deploy to production', completed: true)
-    ]
+    @activities = Activity.all
     @new_activity_name = ''
   end
 
@@ -43,7 +39,7 @@ class App
               stretchy false
 
               on_clicked do
-                self.activities << Activity.new(name: new_activity_name, completed: false)
+                self.activities << Activity.create(name: new_activity_name)
                 self.new_activity_name = ''
               end
             }
@@ -59,8 +55,7 @@ class App
           cell_rows <=> [self, :activities]
 
           on_edited do |row_index, activity|
-            puts "[#{row_index}] #{activity}"
-            STDOUT.flush
+            activity.update
           end
         }
       }
