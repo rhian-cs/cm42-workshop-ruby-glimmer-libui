@@ -1,17 +1,6 @@
-## Running Examples
+## Codeminer42 Ruby Workshop - Making Desktop Apps with Ruby (Glimmer DSL for LibUI)
 
-```sh
-# Make sure `libffi` is installed
-sudo apt install libffi-dev -y
-gem install glimmer-dsl-libui fiddle
-ruby -r glimmer-dsl-libui -e "require 'examples/meta_example'"
-```
-
-## New Ruby App
-
-```sh
-bundle init
-```
+## Setup
 
 Make sure `libffi` is installed. For Ubuntu:
 
@@ -19,26 +8,16 @@ Make sure `libffi` is installed. For Ubuntu:
 sudo apt install libffi-dev -y
 ```
 
-Install the `fiddle` gem:
-
 ```sh
-bundle add fiddle
-```
-
-Install Glimmer for LibUI:
-
-```sh
-bundle add glimmer-dsl-libui
-```
-
-## Setup Existing App
-
-```sh
-bundle
+bundle install
 ruby app.rb
 ```
 
-## Example `.vscode/launch.json` file:
+## Visual Studio Code Setup
+
+If you're using VS Code, you can use the example `.vscode/launch.json` configuration file below. You can then run your app by pressing F5.
+
+The only dependency is the [VSCode rdbg Ruby Debugger](https://marketplace.visualstudio.com/items?itemName=KoichiSasada.vscode-rdbg) extension.
 
 ```json
 {
@@ -53,4 +32,19 @@ ruby app.rb
     }
   ]
 }
+```
+
+## I just want to run some examples
+
+Make sure `libffi` is installed. For Ubuntu:
+
+```sh
+sudo apt install libffi-dev -y
+```
+
+Run this:
+
+```sh
+gem install glimmer-dsl-libui fiddle
+ruby -r glimmer-dsl-libui -e "require 'examples/meta_example'"
 ```
